@@ -1,0 +1,98 @@
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.wrapper {
+  width: 300px;
+}
+
+$height: 46px;
+
+.select {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+
+  &__open {
+    .select__dropdown{
+      display: block;
+    }
+    .select__input{
+      &:after{
+        transform: rotate(135deg);
+      }
+    }
+    .select__backdrop{
+      display: block;
+    }
+  }
+
+  &__backdrop{
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    height: $height;
+    padding: 0 1rem;
+    cursor: pointer;
+    &:after{
+      content: '';
+      position: absolute;
+      right: 20px;
+      display: block;
+      height: 8px;
+      width: 8px;
+      border: 1px solid grey;
+      border-right: none;
+      border-top: none;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 1px;
+    top: $height;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 3px 4px 3px 0 #cccccc;
+  }
+
+  &__list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item{
+    padding: 1rem;
+    border-bottom: 1px solid #cccccc;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+      transition: .2s ease;
+    }
+    &__selected{
+      background: antiquewhite;
+    }
+  }
+}
